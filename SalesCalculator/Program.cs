@@ -8,9 +8,10 @@ using System.IO;
 namespace SalesCalculator {
     class Program {
         static void Main(string[] args) {
-
+            //List<Sale> sales = ReadSales("Sales.csv");
         }
 
+        // リスト2-15
         // 売上データを読み込み、saleオブジェクトのリストを返す
         static List<Sale> ReadSales(string filePath) {
             List<Sale> sales = new List<Sale>();
