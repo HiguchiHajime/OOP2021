@@ -19,7 +19,7 @@ namespace Exercise1 {
         private static void PrintSongs(Song[] songs) {
 
             for (int i = 0; i < songs.Length; ++i) {
-                Console.WriteLine("{0} {1} {2}:{3:00}" ,songs[i].ArtistName,songs[i].Title,(songs[i].Length / 60),(songs[i].Length % 60));
+                Console.WriteLine("曲名:{0}    アーティスト名:{1}    再生時間:{2}:{3:00}" ,songs[i].Title,songs[i].ArtistName,(songs[i].Length / 60),(songs[i].Length % 60));
             }
         }
     }

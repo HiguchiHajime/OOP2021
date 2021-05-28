@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exercise1 {
-     class Song {
+    class Song {
         // 曲のタイトル
-        public string Title = null;
+        public string Title  {set; get;}
         // アーティスト名
-        public string ArtistName = null ;
+        public string ArtistName { set; get; }
         // 曲の長さ
-        public int Length = 0;
+        public int Length { set; get; }
 
         public Song(string title,string name,int len) {
             Title = title;
