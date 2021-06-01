@@ -10,9 +10,9 @@ namespace SalesCalculator {
         static void Main(string[] args) {
             var sales = new SalesCounter("Sales.csv");
 
-            var amountPerStore = sales.GetPerStoreSales();
+            var amountPerStore = sales.GetPerCategorySales();
             foreach(var obj in amountPerStore) {
-                Console.WriteLine("{0} {1}", obj.Key, obj.Value);
+                Console.WriteLine("{0} {1:#,#}円", obj.Key, obj.Value);
             }
         }
 

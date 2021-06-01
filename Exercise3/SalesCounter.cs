@@ -34,18 +34,19 @@ namespace SalesCalculator {
         }
 
 
-        // 店舗売り上げを求める
-        public IDictionary<string,int> GetPerStoreSales() {
+        // カテゴリ別売り上げを求める
+        public IDictionary<string,int> GetPerCategorySales() {
             var dict = new Dictionary<string, int>();
-            // ContainsKeyは店舗名がコレクションの中にあるかどうかを調べている。
             foreach (var sale in _sales) {
                 if (dict.ContainsKey(sale.ProductCategory))
-                    // すでにコレクションに店舗が設定されている
+                    // すでにコレクションにカテゴリが設定されている
                     dict[sale.ProductCategory] += sale.Amount;
                 else
-                    // コレクションに店舗を登録
+                    // コレクションにカテゴリを登録
                     dict[sale.ProductCategory] = sale.Amount;
             }
+            
+
             return dict;
         }
     }

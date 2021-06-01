@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Exercise2 {
     public class InchConverter {
-        private const double inch = 0.0254;
+        private const double ratio = 0.0254;
 
         //インチからメートルを求める
-        public static double ToMeter(double meter) {
-            return meter * inch; 
+        public static double ToMeter(double inch) {
+            return inch * ratio; 
+        }
+
+        // メートルからインチを求める
+        public static double FromMeter(double meter) {
+            return meter / ratio;
         }
 
     }
