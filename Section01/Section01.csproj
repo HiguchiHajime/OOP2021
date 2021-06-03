@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{202AFCE7-96FE-476D-AB9B-46ACBE9018D7}</ProjectGuid>
+    <ProjectGuid>{85654FBA-390B-4778-B89D-C06342D0539A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Exercise1</RootNamespace>
-    <AssemblyName>Exercise1</AssemblyName>
+    <RootNamespace>Section01</RootNamespace>
+    <AssemblyName>Section01</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Song.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
