@@ -12,17 +12,22 @@ namespace Exercise2 {
             var ym = new YearMonth[] {
                 new YearMonth(1980,1),
                 new YearMonth(1990,7),
-                new YearMonth(2001,8),
-                new YearMonth(2020,5),
-                new YearMonth(2021,8),
+                new YearMonth(2005,12),
+                new YearMonth(2012,5),
+                new YearMonth(2020,12),
                 };
             // 4.2.2
             Exercise2_2(ym);
-            Console.WriteLine("------");
+            Console.WriteLine("---------");
 
+            // 4.2.4
+            Exercise2_4(ym);
+            Console.WriteLine("---------");
+
+            // 4.2.5
+            Exercise2_5(ym);
 
         }
-
 
 
         private static void Exercise2_2(YearMonth[] ym) {
@@ -39,6 +44,19 @@ namespace Exercise2 {
                 }
             }
             return null;
+        }
+
+        static void Exercise2_4(YearMonth[] ym) {
+            var year = FindFirst21C(ym);
+            Console.WriteLine(year?.Year.ToString() + "年" ?? "２１世紀のデータはありません");
+
+        }
+
+        private static void Exercise2_5(YearMonth[] ym) {
+            var qury = ym.Select(s => s.AddOneMonth()).ToArray();
+            foreach (var YM in qury) {
+                Console.WriteLine(YM);
+            }
         }
     }
 }
