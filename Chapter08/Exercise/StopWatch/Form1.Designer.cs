@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace StopWatch {
     partial class Form1 {
         /// <summary>
@@ -26,42 +28,43 @@ namespace StopWatch {
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.btstart = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btreset = new System.Windows.Forms.Button();
             this.btrap = new System.Windows.Forms.Button();
             this.btstop = new System.Windows.Forms.Button();
             this.lbTimerDisp = new System.Windows.Forms.Label();
             this.tmDisp = new System.Windows.Forms.Timer(this.components);
+            this.lbrapDisp = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btstart
             // 
             this.btstart.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btstart.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.btstart.Location = new System.Drawing.Point(100, 189);
+            this.btstart.Location = new System.Drawing.Point(57, 120);
             this.btstart.Name = "btstart";
-            this.btstart.Size = new System.Drawing.Size(174, 49);
+            this.btstart.Size = new System.Drawing.Size(200, 92);
             this.btstart.TabIndex = 0;
             this.btstart.Text = "スタート";
             this.btstart.UseVisualStyleBackColor = true;
             this.btstart.Click += new System.EventHandler(this.btstart_Click);
             // 
-            // button2
+            // btreset
             // 
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.button2.Location = new System.Drawing.Point(321, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 49);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "リセット";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btreset.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.btreset.Location = new System.Drawing.Point(293, 120);
+            this.btreset.Name = "btreset";
+            this.btreset.Size = new System.Drawing.Size(185, 92);
+            this.btreset.TabIndex = 0;
+            this.btreset.Text = "リセット";
+            this.btreset.UseVisualStyleBackColor = true;
+            this.btreset.Click += new System.EventHandler(this.btreset_Click);
             // 
             // btrap
             // 
             this.btrap.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.btrap.Location = new System.Drawing.Point(321, 296);
+            this.btrap.Location = new System.Drawing.Point(293, 244);
             this.btrap.Name = "btrap";
-            this.btrap.Size = new System.Drawing.Size(174, 49);
+            this.btrap.Size = new System.Drawing.Size(185, 101);
             this.btrap.TabIndex = 0;
             this.btrap.Text = "ラップ";
             this.btrap.UseVisualStyleBackColor = true;
@@ -70,9 +73,9 @@ namespace StopWatch {
             // btstop
             // 
             this.btstop.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.btstop.Location = new System.Drawing.Point(100, 296);
+            this.btstop.Location = new System.Drawing.Point(57, 244);
             this.btstop.Name = "btstop";
-            this.btstop.Size = new System.Drawing.Size(174, 49);
+            this.btstop.Size = new System.Drawing.Size(200, 101);
             this.btstop.TabIndex = 0;
             this.btstop.Text = "ストップ";
             this.btstop.UseVisualStyleBackColor = true;
@@ -82,24 +85,35 @@ namespace StopWatch {
             // 
             this.lbTimerDisp.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lbTimerDisp.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbTimerDisp.Location = new System.Drawing.Point(96, 73);
+            this.lbTimerDisp.Location = new System.Drawing.Point(56, 12);
             this.lbTimerDisp.Name = "lbTimerDisp";
-            this.lbTimerDisp.Size = new System.Drawing.Size(449, 88);
+            this.lbTimerDisp.Size = new System.Drawing.Size(422, 88);
             this.lbTimerDisp.TabIndex = 1;
             // 
             // tmDisp
             // 
-            this.tmDisp.Interval = 10;
+            this.tmDisp.Interval = 1;
+            // 
+            // lbrapDisp
+            // 
+            this.lbrapDisp.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.lbrapDisp.FormattingEnabled = true;
+            this.lbrapDisp.ItemHeight = 24;
+            this.lbrapDisp.Location = new System.Drawing.Point(507, 12);
+            this.lbrapDisp.Name = "lbrapDisp";
+            this.lbrapDisp.Size = new System.Drawing.Size(272, 340);
+            this.lbrapDisp.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.MenuText;
+            this.ClientSize = new System.Drawing.Size(791, 381);
+            this.Controls.Add(this.lbrapDisp);
             this.Controls.Add(this.lbTimerDisp);
             this.Controls.Add(this.btrap);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btreset);
             this.Controls.Add(this.btstop);
             this.Controls.Add(this.btstart);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -110,14 +124,17 @@ namespace StopWatch {
 
         }
 
+
+
         #endregion
 
         private System.Windows.Forms.Button btstart;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btreset;
         private System.Windows.Forms.Button btrap;
         private System.Windows.Forms.Button btstop;
         private System.Windows.Forms.Label lbTimerDisp;
         private System.Windows.Forms.Timer tmDisp;
+        private System.Windows.Forms.ListBox lbrapDisp;
     }
 }
 
