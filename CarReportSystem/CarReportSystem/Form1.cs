@@ -142,6 +142,7 @@ namespace CarReportSystem {
                 cbCarName.Text.ToString(),
                 tbReport.Text,
                 pbPicture.Image);
+            dgvRegistData.Update();
         }
     }
 }
