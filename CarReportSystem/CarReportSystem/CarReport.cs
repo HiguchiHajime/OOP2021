@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarReportSystem {
+    [Serializable]
     public class CarReport {
         public DateTime ReportDate { get; set; } // 日付
         public string ReportAuther { get; set; } // 記録者

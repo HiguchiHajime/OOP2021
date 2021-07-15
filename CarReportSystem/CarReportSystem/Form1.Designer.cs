@@ -327,12 +327,13 @@ namespace CarReportSystem {
             // btOpen
             // 
             this.btOpen.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.btOpen.Location = new System.Drawing.Point(26, 357);
+            this.btOpen.Location = new System.Drawing.Point(26, 361);
             this.btOpen.Name = "btOpen";
             this.btOpen.Size = new System.Drawing.Size(62, 43);
             this.btOpen.TabIndex = 8;
             this.btOpen.Text = "開く...";
             this.btOpen.UseVisualStyleBackColor = true;
+            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
             // 
             // btSave
             // 
@@ -343,6 +344,7 @@ namespace CarReportSystem {
             this.btSave.TabIndex = 8;
             this.btSave.Text = "保存...";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btExit
             // 
