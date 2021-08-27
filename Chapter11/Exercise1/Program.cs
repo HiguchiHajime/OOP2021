@@ -33,7 +33,7 @@ namespace Exercise1 {
 
         private static void Exercise1_2(string file) {
             var xdoc = XDocument.Load(file);
-            var xsports = xdoc.Root.Elements().OrderBy(x => x.Element("firstplayed"));
+            var xsports = xdoc.Root.Elements().OrderBy(x => (int)(x.Element("firstplayed")));
             foreach(var xsport in xsports) {
                 var xname = xsport.Element("name").Attribute("kanji");
                 var xyear = xsport.Element("firstplayed");
