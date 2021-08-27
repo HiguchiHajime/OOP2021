@@ -20,13 +20,15 @@ namespace Exercise1 {
 
         private static void Exercise1_1(string file) {
             var xdoc = XDocument.Load(file);
-            var xelements = xdoc.Root.Elements();
+            var xelements = xdoc.Root.Elements().Select(x => new
+            {
+                Name = x.Element("name").Value,
+                Teammembers = x.Element("teammembers").Value
+            });
 
             foreach(var xsports in xelements) {
-                var xname = xsports.Element("name");
-                var xmember = xsports.Element("teammembers");
 
-                Console.WriteLine("競技名:{0},メンバー数:{1}",xname.Value,xmember.Value);
+                Console.WriteLine("競技名:{0},メンバー数:{1}",xsports.Name,xsports.Teammembers);
             }
  
         }
@@ -43,6 +45,17 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_3(string file) {
+            //var xdoc = XDocument.Load(file);
+            //var xsports = xdoc.Root.Elements().Select(s => new
+            //{
+            //    Name =
+            //}) ;
+
+            //foreach(var xsport in xsports) {
+            //    Console.WriteLine("最もメンバー数が多い競技は:{0}です。メンバー数:{1}人",xsport.Name,xsport.Teammembers);
+            //}
+
+         
         }
     }
 }
