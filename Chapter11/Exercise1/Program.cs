@@ -45,17 +45,18 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_3(string file) {
-            //var xdoc = XDocument.Load(file);
-            //var xsports = xdoc.Root.Elements().Select(s => new
-            //{
-            //    Name =
-            //}) ;
+            var xdoc = XDocument.Load(file);
+            var xsports = xdoc.Root.Elements()
+                                             .Select(x => new
+                                             {
+                                                 Name = x.Element("name").Value,
+                                                 Teammembers = x.Element("teammembers").Value
+                                             })
+                                             .OrderByDescending(x => int.Parse(x.Teammembers)).First();
 
-            //foreach(var xsport in xsports) {
-            //    Console.WriteLine("最もメンバー数が多い競技は:{0}です。メンバー数:{1}人",xsport.Name,xsport.Teammembers);
-            //}
+                Console.WriteLine("最もメンバー数が多い競技は:{0}です。メンバー数:{1}人", xsports.Name, xsports.Teammembers);
 
-         
+
         }
     }
 }
