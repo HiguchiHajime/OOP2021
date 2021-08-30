@@ -21,6 +21,10 @@ namespace Section02 {
 
             XElement element = XElement.Parse(elmstring);
             var xdoc = XDocument.Load("novelists.xml");
+            var elements = xdoc.Root.Elements()
+                                .Where(x => x.Element("name").Value == "菊池 寛");
+
+            elements.Remove();
             xdoc.Root.Add(element);
 
             xdoc.Save("novelists.xml");
