@@ -14,10 +14,21 @@ namespace Section04 {
             new Program();
         }
 
+        Dictionary<string, int> AreaDic = new Dictionary<string, int>()
+        {
+            {"前橋",4210 },
+            {"みなかみ",4220 },
+            { "宇都宮" , 4110},
+            { "水戸",4010},
+        };
+
         public Program(){
             Console.WriteLine("yahoo! 週間天気予報" + "\n");
             Console.WriteLine("地域コードを入力してください。\n"
-                              + "1:前橋\n" + "2:みなかみ\n" + "3:宇都宮\n" + "4:水戸\n" + "9:その他(直接入力)");
+                              + "1:前橋\n" + "2:みなかみ\n" + "3:宇都宮\n" + "4:水戸\n" + "9:その他(直接入力)\n");
+            Console.Write("<");
+
+
             var n = int.Parse(Console.ReadLine());
             int CityCode = 0;
             switch(n) {
@@ -42,8 +53,8 @@ namespace Section04 {
 
             
             Console.WriteLine("*****************\n");
-            var results = GetWeatherReportFromYahoo(CityCode);
 
+            var results = GetWeatherReportFromYahoo(CityCode);
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
