@@ -69,7 +69,7 @@ namespace Exercise1 {
             var xdoc = XDocument.Load(file);
             xdoc.Root.Add(element);
 
-            xdoc.Save("sports.xml");
+            xdoc.Save(newfile);
         }
     }
 }
