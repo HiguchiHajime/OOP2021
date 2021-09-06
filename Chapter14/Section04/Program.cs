@@ -20,41 +20,38 @@ namespace Section04 {
             {"みなかみ",4220 },
             { "宇都宮" , 4110},
             { "水戸",4010},
+            { "さいたま",4310 },
         };
+        List<int> cityCode = new List<int>();
 
-        public Program(){
+        public Program() {
             Console.WriteLine("yahoo! 週間天気予報" + "\n");
-            Console.WriteLine("地域コードを入力してください。\n"
-                              + "1:前橋\n" + "2:みなかみ\n" + "3:宇都宮\n" + "4:水戸\n" + "9:その他(直接入力)\n");
-            Console.Write("<");
+            Console.WriteLine("地域コードを入力してください。\n");
+            int count = 1;
 
+            foreach (var s in AreaDic) {
+                Console.WriteLine("{0}:{1}", count + 1, s.Key);
+                cityCode.Add(s.Value);
+            }
+            Console.WriteLine("9:その他");
+            Console.Write(">");
 
-            var n = int.Parse(Console.ReadLine());
-            int CityCode = 0;
-            switch(n) {
-                case 1:
-                    CityCode = 4210;
-                    break;
-                case 2:
-                    CityCode = 4220;
-                    break;
-                case 3:
-                    CityCode = 4110;
-                    break;
-                case 4:
-                    CityCode = 4010;
-                    break;
+            var selectArea = Console.ReadLine();
+            int pos = int.Parse(selectArea);
+            int code;
 
-                default:
-                    Console.WriteLine("地域コードを入力してください。\n");
-                    CityCode = int.Parse(Console.ReadLine());
-                    break;
+            if (pos != 9) {
+             code = cityCode[pos - 1];
+            }
+            else {
+                Console.WriteLine("都市コードを入力:");
+                code = int.Parse(Console.ReadLine());
+                
             }
 
+            var results = GetWeatherReportFromYahoo(code);
             
             Console.WriteLine("*****************\n");
-
-            var results = GetWeatherReportFromYahoo(CityCode);
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
