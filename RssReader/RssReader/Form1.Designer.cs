@@ -58,12 +58,14 @@ namespace RssReader {
             this.lbTitles.Name = "lbTitles";
             this.lbTitles.Size = new System.Drawing.Size(345, 544);
             this.lbTitles.TabIndex = 2;
+            this.lbTitles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbTitles_MouseDoubleClick);
             // 
             // webBrowser1
             // 
             this.webBrowser1.Location = new System.Drawing.Point(368, 59);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(639, 540);
             this.webBrowser1.TabIndex = 3;
             // 
