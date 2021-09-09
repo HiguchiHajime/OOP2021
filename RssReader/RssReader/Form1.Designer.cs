@@ -48,6 +48,7 @@ namespace RssReader {
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(631, 30);
             this.tbUrl.TabIndex = 1;
+            this.tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/it.xml";
             // 
             // lbTitles
             // 
@@ -56,17 +57,17 @@ namespace RssReader {
             this.lbTitles.ItemHeight = 18;
             this.lbTitles.Location = new System.Drawing.Point(17, 58);
             this.lbTitles.Name = "lbTitles";
-            this.lbTitles.Size = new System.Drawing.Size(345, 544);
+            this.lbTitles.Size = new System.Drawing.Size(313, 544);
             this.lbTitles.TabIndex = 2;
             this.lbTitles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbTitles_MouseDoubleClick);
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(368, 59);
+            this.webBrowser1.Location = new System.Drawing.Point(336, 58);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(639, 540);
+            this.webBrowser1.Size = new System.Drawing.Size(960, 590);
             this.webBrowser1.TabIndex = 3;
             // 
             // btRead
@@ -83,7 +84,7 @@ namespace RssReader {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 611);
+            this.ClientSize = new System.Drawing.Size(1308, 677);
             this.Controls.Add(this.btRead);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lbTitles);

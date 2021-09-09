@@ -23,7 +23,7 @@ namespace RssReader {
 
 
         private void SetRssTitle(string Url) {
-            //lbTitles.Items.Clear();
+            lbTitles.Items.Clear();
             using (var wc = new WebClient()) {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
                 var stream = wc.OpenRead(Url);
@@ -42,13 +42,10 @@ namespace RssReader {
                 var stream = wc.OpenRead(tbUrl.Text);
 
                 XDocument xdoc = XDocument.Load(stream);
-                var Title = lbTitles.SelectedItem.ToString();
-                //var l = lbTitles.SelectedItem.ToString();
-                //foreach(var element in elements) {
-                //    webBrowser1.Navigate(element.Value);
-                //}
+                var Url = xdoc.Root.Descendants("link").ToList();
+                webBrowser1.Navigate(Url[lbTitles.SelectedIndex].Value);
             }
 
-            }
         }
     }
+}
