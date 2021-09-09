@@ -13,14 +13,17 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form31063 : Form {
+        List<string> Linklist = new List<string>();
+        List<string> DesList = new List<string>();
+
         public Form31063() {
             InitializeComponent();
         }
 
         private void btRead_Click(object sender, EventArgs e) {
             SetRssTitle(tbUrl.Text);
+            
         }
-
 
         private void SetRssTitle(string Url) {
             lbTitles.Items.Clear();
@@ -29,23 +32,25 @@ namespace RssReader {
                 var stream = wc.OpenRead(Url);
 
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("title");
+                var nodes = xdoc.Root.Descendants("item");
                 foreach (var node in nodes) {
-                    lbTitles.Items.Add(node.Value);
+                    var xtitle = node.Element("title");
+                    var xlink = node.Element("link");
+                    var xdes = node.Element("description");
+                    lbTitles.Items.Add(xtitle.Value);
+                    Linklist.Add(xlink.Value);
+                    DesList.Add(xdes.Value);
                 }
             }
         }
 
         private void lbTitles_MouseDoubleClick(object sender, MouseEventArgs e) {
-            using (var wc = new WebClient()) {
-                wc.Headers.Add("Content-type", "charset=UTF-8");
-                var stream = wc.OpenRead(tbUrl.Text);
-
-                XDocument xdoc = XDocument.Load(stream);
-                var Url = xdoc.Root.Descendants("link").ToList();
-                webBrowser1.Navigate(Url[lbTitles.SelectedIndex].Value);
-            }
-
+            lblDescription.Text = DesList[lbTitles.SelectedIndex].ToString();
         }
+
+        private void lblDescription_MouseClick(object sender, MouseEventArgs e) {
+            webBrowser1.Navigate(Linklist[lbTitles.SelectedIndex].ToString());
+        }
+
     }
 }
