@@ -27,9 +27,9 @@ namespace RssReader {
             this.label1 = new System.Windows.Forms.Label();
             this.tbUrl = new System.Windows.Forms.TextBox();
             this.lbTitles = new System.Windows.Forms.ListBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btRead = new System.Windows.Forms.Button();
-            this.lblDescription = new System.Windows.Forms.Label();
+            this.btWebbro = new System.Windows.Forms.Button();
+            this.tbDes = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -62,15 +62,6 @@ namespace RssReader {
             this.lbTitles.TabIndex = 2;
             this.lbTitles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbTitles_MouseDoubleClick);
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(336, 79);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(960, 590);
-            this.webBrowser1.TabIndex = 3;
-            // 
             // btRead
             // 
             this.btRead.Location = new System.Drawing.Point(904, 5);
@@ -81,25 +72,34 @@ namespace RssReader {
             this.btRead.UseVisualStyleBackColor = true;
             this.btRead.Click += new System.EventHandler(this.btRead_Click);
             // 
-            // lblDescription
+            // btWebbro
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblDescription.Location = new System.Drawing.Point(12, 48);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(54, 28);
-            this.lblDescription.TabIndex = 5;
-            this.lblDescription.Text = "***\r\n";
-            this.lblDescription.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblDescription_MouseClick);
+            this.btWebbro.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btWebbro.Location = new System.Drawing.Point(787, 249);
+            this.btWebbro.Name = "btWebbro";
+            this.btWebbro.Size = new System.Drawing.Size(271, 66);
+            this.btWebbro.TabIndex = 6;
+            this.btWebbro.Text = "ブラウザ表示";
+            this.btWebbro.UseVisualStyleBackColor = true;
+            this.btWebbro.Click += new System.EventHandler(this.btWebbro_Click);
+            // 
+            // tbDes
+            // 
+            this.tbDes.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbDes.Location = new System.Drawing.Point(359, 79);
+            this.tbDes.Multiline = true;
+            this.tbDes.Name = "tbDes";
+            this.tbDes.Size = new System.Drawing.Size(798, 99);
+            this.tbDes.TabIndex = 7;
             // 
             // Form31063
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 677);
-            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.tbDes);
+            this.Controls.Add(this.btWebbro);
             this.Controls.Add(this.btRead);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lbTitles);
             this.Controls.Add(this.tbUrl);
             this.Controls.Add(this.label1);
@@ -115,9 +115,9 @@ namespace RssReader {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.ListBox lbTitles;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button btRead;
-        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Button btWebbro;
+        private System.Windows.Forms.TextBox tbDes;
     }
 }
 
