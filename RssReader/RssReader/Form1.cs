@@ -13,8 +13,7 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form31063 : Form {
-        List<string> Linklist = new List<string>();
-        List<string> DesList = new List<string>();
+        IEnumerable<item> items;
 
         public Form31063() {
             InitializeComponent();
@@ -32,38 +31,47 @@ namespace RssReader {
                     var stream = wc.OpenRead(Url);
 
                     XDocument xdoc = XDocument.Load(stream);
-                    var nodes = xdoc.Root.Descendants("item");
-                    foreach (var node in nodes) {
-                        var xtitle = node.Element("title");
-                        var xlink = node.Element("link");
-                        var xdes = node.Element("description");
-                        lbTitles.Items.Add(xtitle.Value);
-                        Linklist.Add(xlink.Value);
-                        DesList.Add(xdes.Value);
+                    items = xdoc.Root.Descendants("item")
+                                    .Select(x => new item
+                                    {
+                                        Title = (string)x.Element("title"),
+                                        Url = (string)x.Element("link"),
+                                        pubData = (DateTime)x.Element("pubDate"),
+                                        Description = (string)x.Element("description")
+                                    });
+                    foreach (var item in items) {
+                    lbTitles.Items.Add(item.Title);
                     }
                 }
         }
 
+        // RSSからdescriptionを読み取ってテキストボックスに表示する
         private void lbTitles_MouseDoubleClick(object sender, MouseEventArgs e) {
             tbDes.Clear();
-            tbDes.Text += DateTime.Now.ToString();
-            tbDes.Text += "\r\n" + DesList[lbTitles.SelectedIndex].ToString();
+            tbDes.Text = (items.ToArray())[lbTitles.SelectedIndex].pubData.ToString() + "\r\n";
+            tbDes.Text += (items.ToArray())[lbTitles.SelectedIndex].Description.ToString();
         }
 
         //private void lblDescription_MouseClick(object sender, MouseEventArgs e) {
         //    webBrowser1.Navigate(Linklist[lbTitles.SelectedIndex].ToString());
         //}
 
+        // 新しくフォームを作成し、RSSから読み取ったウェブページを開く
         private void btWebbro_Click(object sender, EventArgs e) {
             Form Webform = new Form();
             WebBrowser web = new WebBrowser();
+            Button btNextPage = new Button();
+            Button btPage = new Button();
+            btNextPage.Text = "→";
             Webform.Size = new Size(1300,700);
-            web.Size = Webform.Size;
+            web.Size = new Size(1000,700);
+            web.Location = new Point(200,0);
             web.ScriptErrorsSuppressed = true;
             Webform.Controls.Add(web);
-            web.Navigate(Linklist[lbTitles.SelectedIndex]);
-            
+            Webform.Controls.Add(btNextPage);
+            web.Navigate((items.ToArray())[lbTitles.SelectedIndex].Url);
             Webform.Show();
         }
+
     }
 }
