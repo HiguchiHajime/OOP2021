@@ -58,19 +58,8 @@ namespace RssReader {
 
         // 新しくフォームを作成し、RSSから読み取ったウェブページを開く
         private void btWebbro_Click(object sender, EventArgs e) {
-            Form Webform = new Form();
-            WebBrowser web = new WebBrowser();
-            Button btNextPage = new Button();
-            Button btPage = new Button();
-            btNextPage.Text = "→";
-            Webform.Size = new Size(1300,700);
-            web.Size = new Size(1000,700);
-            web.Location = new Point(200,0);
-            web.ScriptErrorsSuppressed = true;
-            Webform.Controls.Add(web);
-            Webform.Controls.Add(btNextPage);
-            web.Navigate((items.ToArray())[lbTitles.SelectedIndex].Url);
-            Webform.Show();
+            Form2 WebForm = new Form2(new Uri(((items.ToArray())[lbTitles.SelectedIndex].Url)));
+            WebForm.Show();
         }
 
     }
