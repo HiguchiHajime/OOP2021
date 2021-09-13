@@ -105,6 +105,7 @@ namespace RssReader {
             this.Controls.Add(this.label1);
             this.Name = "Form31063";
             this.Text = "31063";
+            this.Load += new System.EventHandler(this.Form31063_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

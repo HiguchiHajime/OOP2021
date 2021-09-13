@@ -18,7 +18,10 @@ namespace RssReader {
         public Form31063() {
             InitializeComponent();
         }
+        private void Form31063_Load(object sender, EventArgs e) {
+            btWebbro.Enabled = false;
 
+        }
         private void btRead_Click(object sender, EventArgs e) {
             SetRssTitle(tbUrl.Text);
             
@@ -26,6 +29,7 @@ namespace RssReader {
 
         private void SetRssTitle(string Url) {
             lbTitles.Items.Clear();
+            try {
                 using (var wc = new WebClient()) {
                     wc.Headers.Add("Content-type", "charset=UTF-8");
                     var stream = wc.OpenRead(Url);
@@ -40,9 +44,13 @@ namespace RssReader {
                                         Description = (string)x.Element("description")
                                     });
                     foreach (var item in items) {
-                    lbTitles.Items.Add(item.Title);
+                        lbTitles.Items.Add(item.Title);
                     }
                 }
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // RSSからdescriptionを読み取ってテキストボックスに表示する
@@ -50,17 +58,15 @@ namespace RssReader {
             tbDes.Clear();
             tbDes.Text = (items.ToArray())[lbTitles.SelectedIndex].pubData.ToString() + "\r\n";
             tbDes.Text += (items.ToArray())[lbTitles.SelectedIndex].Description.ToString();
+            btWebbro.Enabled = true;
         }
-
-        //private void lblDescription_MouseClick(object sender, MouseEventArgs e) {
-        //    webBrowser1.Navigate(Linklist[lbTitles.SelectedIndex].ToString());
-        //}
 
         // 新しくフォームを作成し、RSSから読み取ったウェブページを開く
         private void btWebbro_Click(object sender, EventArgs e) {
             Form2 WebForm = new Form2(new Uri(((items.ToArray())[lbTitles.SelectedIndex].Url)));
             WebForm.Show();
         }
+
 
     }
 }
