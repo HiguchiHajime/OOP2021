@@ -23,5 +23,10 @@ namespace RssReader {
             webBrowser1.GoBack();
         }
 
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+
+            btBack.Enabled = webBrowser1.CanGoBack;
+            btForward.Enabled = webBrowser1.CanGoForward;
+        }
     }
 }
