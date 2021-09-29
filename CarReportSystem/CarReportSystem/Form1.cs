@@ -30,7 +30,7 @@ namespace CarReportSystem {
         }
 
         private void fmMain_Load(object sender, EventArgs e) {
-
+            dgvRegistData.Columns[5].Visible = false;
         }
         // 画像削除
         private void btPictureDelete_Click(object sender, EventArgs e) {
@@ -132,21 +132,32 @@ namespace CarReportSystem {
 
         // 削除ボタン
         private void btDataDelete_Click(object sender, EventArgs e) {
-            if (listCarReport.Count <= 0)
-                return;
-            listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
+            //if (listCarReport.Count <= 0)
+            //    return;
+            try {
+                listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
+            }
+            catch(System.NullReferenceException ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         // 修正ボタン
         private void btDataCorrect_Click(object sender, EventArgs e) {
-            listCarReport[dgvRegistData.CurrentRow.Index].UpdateCarReport(
-                dtpDate.Value,
-                cbAuthor.Text,
-                SelectedGroup(),
-                cbCarName.Text.ToString(),
-                tbReport.Text,
-                pbPicture.Image);
-            dgvRegistData.Refresh();          // コントロールの強制再描画
+            try {
+                listCarReport[dgvRegistData.CurrentRow.Index].UpdateCarReport(
+                    dtpDate.Value,
+                    cbAuthor.Text,
+                    SelectedGroup(),
+                    cbCarName.Text.ToString(),
+                    tbReport.Text,
+                    pbPicture.Image);
+                dgvRegistData.Refresh();          // コントロールの強制再描画
+            }            
+            catch (System.NullReferenceException ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btSave_Click(object sender, EventArgs e) {
@@ -160,16 +171,31 @@ namespace CarReportSystem {
             }
         }
 
-        private void btOpen_Click(object sender, EventArgs e) {
+        private void btOpen_Click(object sender, EventArgs e) {           
             if(ofdFileopen.ShowDialog() == DialogResult.OK) {
-                // バイナリ形式で逆シリアル化
-                var bf = new BinaryFormatter();
-                using (FileStream fs = File.Open(ofdFileopen.FileName,FileMode.Open,FileAccess.Read)) {
-                    // 逆シリアル化して読み込む
-                    listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-                    dgvRegistData.DataSource = null;
-                    dgvRegistData.DataSource = listCarReport;
+                try {
+                    // バイナリ形式で逆シリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(ofdFileopen.FileName, FileMode.Open, FileAccess.Read)) {
+                        // 逆シリアル化して読み込む
+                        listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRegistData.DataSource = null;
+                        dgvRegistData.DataSource = listCarReport;
+                    }
                 }
+                catch (System.Runtime.Serialization.SerializationException ex) {
+                    MessageBox.Show(ex.Message);
+                }
+                //読み込んだデータを各コンボボックスに登録する
+                foreach (var info in listCarReport) {
+                    setCbAuther(info.ReportAuther);
+                    setCbCarName(info.CarName);
+                }
+                //// dgvから取り出す
+                //for(int i = 0; i<dgvRegistData.RowCount; i++) {
+                //    setCbAuther(dgvRegistData.Rows[i].Cells[1].Value.ToString());
+                //    setCbCarName(dgvRegistData.Rows[i].Cells[3].Value.ToString());
+                //}
             }
         }
     }
