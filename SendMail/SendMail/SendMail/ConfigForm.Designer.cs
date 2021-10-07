@@ -25,6 +25,7 @@ namespace SendMail {
         /// </summary>
         private void InitializeComponent() {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSsl = new System.Windows.Forms.CheckBox();
             this.tbPass = new System.Windows.Forms.TextBox();
             this.tbPort = new System.Windows.Forms.TextBox();
             this.tbUserName = new System.Windows.Forms.TextBox();
@@ -34,7 +35,6 @@ namespace SendMail {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbSsl = new System.Windows.Forms.CheckBox();
             this.tbSender = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btDefault = new System.Windows.Forms.Button();
@@ -62,6 +62,16 @@ namespace SendMail {
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "サーバー情報";
+            // 
+            // cbSsl
+            // 
+            this.cbSsl.AutoSize = true;
+            this.cbSsl.Location = new System.Drawing.Point(396, 153);
+            this.cbSsl.Name = "cbSsl";
+            this.cbSsl.Size = new System.Drawing.Size(68, 16);
+            this.cbSsl.TabIndex = 2;
+            this.cbSsl.Text = "SSL有効";
+            this.cbSsl.UseVisualStyleBackColor = true;
             // 
             // tbPass
             // 
@@ -143,16 +153,6 @@ namespace SendMail {
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ユーザー情報";
             // 
-            // cbSsl
-            // 
-            this.cbSsl.AutoSize = true;
-            this.cbSsl.Location = new System.Drawing.Point(396, 153);
-            this.cbSsl.Name = "cbSsl";
-            this.cbSsl.Size = new System.Drawing.Size(68, 16);
-            this.cbSsl.TabIndex = 2;
-            this.cbSsl.Text = "SSL有効";
-            this.cbSsl.UseVisualStyleBackColor = true;
-            // 
             // tbSender
             // 
             this.tbSender.Font = new System.Drawing.Font("MS UI Gothic", 16F);
@@ -223,6 +223,7 @@ namespace SendMail {
             this.Controls.Add(this.groupBox1);
             this.Name = "ConfigForm";
             this.Text = "ConfigForm";
+            this.Load += new System.EventHandler(this.ConfigForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

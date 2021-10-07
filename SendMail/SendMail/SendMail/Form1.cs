@@ -10,15 +10,21 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Runtime.Serialization;
 
 namespace SendMail {
     public partial class Form1 : Form {
         private ConfigForm configForm = new ConfigForm();
-        Settings settings = Settings.getInstance();
+        Settings settings =null;
         public Form1() {
             InitializeComponent();
-            if (File.Exists("Settings.xml"))
-            settings.ReadConfig();
+            
+            settings = Settings.getInstance();
+            if (!settings.setting_flag) {
+                MessageBox.Show("設定データを入力してください");
+                configForm.ShowDialog();
+            }
         }
         
         private void btSend_Click(object sender, EventArgs e) {
@@ -73,6 +79,13 @@ namespace SendMail {
 
         private void btConfig_Click(object sender, EventArgs e) {
             configForm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            //using (var reader = XmlReader.Create("Settings.xml")) {
+            //    var serializer = new DataContractSerializer(typeof(Settings));
+            //    var readsettings = (Settings)serializer.ReadObject(reader);
+            //}
         }
     }
 }
