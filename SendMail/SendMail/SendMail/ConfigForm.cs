@@ -27,25 +27,27 @@ namespace SendMail {
             tbUserName.Text = settings.sMailAddr();
             tbPass.Text = settings.sPass();
             cbSsl.Checked = settings.sSsl();
+            tbSender.Text = settings.sMailAddr();
         }
 
-        // 送信データ登録
-        private void SettingRegist() {
+        //// 送信データ登録
+        //private void SettingRegist() {
             
-        }
+        //}
 
         private void btCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
         private void btApply_Click(object sender, EventArgs e) {
-            SettingRegist();
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text),
+              tbUserName.Text, tbPass.Text, cbSsl.Checked);
         }
        
 
         private void btOK_Click(object sender, EventArgs e) {
             if (CheckSet()) {
-                SettingRegist();
+                btApply_Click(sender,e);
                 this.Close();
             }
         }
@@ -75,6 +77,7 @@ namespace SendMail {
             tbUserName.Text = settings.MailAddr;
             tbPass.Text = settings.Pass;
             cbSsl.Checked = settings.Ssl;
+            tbSender.Text = settings.MailAddr;
         }
     }
 }

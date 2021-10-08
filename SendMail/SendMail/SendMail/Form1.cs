@@ -21,23 +21,29 @@ namespace SendMail {
             InitializeComponent();
             
             settings = Settings.getInstance();
-            if (!settings.setting_flag) {
-                MessageBox.Show("設定データを入力してください");
+            if (!Settings.Set)
                 configForm.ShowDialog();
-            }
+            Settings.Set = true;
         }
         
         private void btSend_Click(object sender, EventArgs e) {
             try {
-                
+                btSend.Enabled = false;
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
                 mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先（To）
-                mailMessage.To.Add(tbTo.Text);
+                if (string.IsNullOrWhiteSpace(tbTo.Text) || string.Empty == tbTo.Text) {
+                    MessageBox.Show("宛先を入力してください");
+                    btSend.Enabled = true;
+                    return;
+                }
+                else
+                    mailMessage.To.Add(tbTo.Text);
 
-                if(tbCc.Text != String.Empty)
+
+                if (tbCc.Text != String.Empty)
                 mailMessage.CC.Add(tbCc.Text);
 
                 if(tbBcc.Text != String.Empty)
@@ -46,7 +52,13 @@ namespace SendMail {
                 //件名（タイトル）
                 mailMessage.Subject = tbTitle.Text;
                 //本文
-                mailMessage.Body = tbMessage.Text;
+                if (string.IsNullOrWhiteSpace(tbMessage.Text) || string.Empty == tbMessage.Text) {
+                    MessageBox.Show("本文を入力してください");
+                    btSend.Enabled = true;
+                    return;
+                }
+                else
+                    mailMessage.Body = tbMessage.Text;
 
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
@@ -58,10 +70,10 @@ namespace SendMail {
                 smtpClient.Port = settings.Port;
                 smtpClient.EnableSsl = true;
 
+                
                 smtpClient.SendCompleted += smtpClient_SendCompleted;
                 string userState = "SendMail";
-                smtpClient.SendAsync(mailMessage, userState);
-
+                    smtpClient.SendAsync(mailMessage, userState);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -69,12 +81,23 @@ namespace SendMail {
         }
 
         private void smtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
+            btSend.Enabled = true;
             if (e.Error != null) {
                 MessageBox.Show(e.Error.Message);
             }
             else {
+                btSend.Enabled = true;
                 MessageBox.Show("送信完了");
+                TextBoxClear();
             }
+        }
+
+        private void TextBoxClear() {
+            tbTo.Clear();
+            tbCc.Clear();
+            tbBcc.Clear();
+            tbTitle.Clear();
+            tbMessage.Clear();
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
@@ -82,10 +105,18 @@ namespace SendMail {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            //using (var reader = XmlReader.Create("Settings.xml")) {
-            //    var serializer = new DataContractSerializer(typeof(Settings));
-            //    var readsettings = (Settings)serializer.ReadObject(reader);
-            //}
+
+            if (!Settings.Set) {
+                configForm.ShowDialog();
+            }
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void 新規作成NToolStripMenuItem_Click(object sender, EventArgs e) {
+            TextBoxClear();
         }
     }
 }

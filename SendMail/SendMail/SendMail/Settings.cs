@@ -7,18 +7,19 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.IO;
 using System.Windows.Forms;
+using System.Security;
 
 namespace SendMail {
      public class Settings {
 
-        private static Settings instance = null;
-
+     private static Settings instance = null;
+        //  送信データ設定済みかどうか
+        public static bool Set { get; set; } = true;
      public int Port { get; set; }         //ポート番号
      public string Host { get; set; }      //ホスト名
      public string MailAddr { get; set; }  //メールアドレス
      public string Pass { get; set; }      //パスワード
      public bool Ssl { get; set; }         //SSL
-     public bool setting_flag { get; set; }     //XMLがあるかどうか
         // コンストラクタ
         private Settings() {
 
@@ -26,18 +27,23 @@ namespace SendMail {
 
         // インスタンスの取得
         public static Settings getInstance() {
-            
-            if(instance == null) {
-                instance = new Settings();
-                if (File.Exists("Settings.xml")) {
+            try {
+                if (instance == null) {
+                    instance = new Settings();
                     Settings.ReadConfig();
-                    instance.setting_flag = true;
-                }
-                else {
-
-                    instance.setting_flag = false;
                 }
             }
+            // ファイルがない場合(初回起動時)
+            catch(Exception ex) {
+                Set = false;
+            }
+            //// セキュリティエラーが検出された場合
+            //catch (SecurityException ex){
+
+            //}
+
+
+
             return instance;
 
         }
