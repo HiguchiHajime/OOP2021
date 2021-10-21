@@ -101,6 +101,11 @@ namespace SendMail {
             Pass = pass;
             Ssl = ssl;
 
+            instance.Host = host;
+            instance.Port = port;
+            instance.MailAddr = mailAddr;
+            instance.Pass = pass;
+            instance.Ssl = ssl;
             ConfigXml();
         }
 

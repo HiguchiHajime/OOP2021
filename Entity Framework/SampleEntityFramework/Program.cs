@@ -128,8 +128,8 @@ namespace SampleEntityFramework {
             var db = new BooksDbContext();
 
 
-            foreach (var book in db.Books) {
-                Console.WriteLine($"書籍名:{book.Title} 著者名:{book.Author.Name} 発行年:{book.PublishedYear}");
+            foreach (var book in db.Books.OrderBy(b => b.Author.id)) {
+                Console.WriteLine($"書籍名:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}({book.Author.Birthday.ToString("d")})");
             }
         }
 
@@ -140,7 +140,7 @@ namespace SampleEntityFramework {
             var books = db.Books.Where(s => s.Title.Length == db.Books.Max(d => d.Title.Length));
 
             foreach(var book in books)
-            Console.WriteLine($"タイトルが最も長い書籍は: {book.Title}");
+            Console.WriteLine($"タイトルが最も長い書籍は: {book.Title} {book.PublishedYear} {book.Author.Name}({book.Author.Birthday.ToString("d")})");
         }
 
         private static void Exercise13_4() {
