@@ -144,7 +144,7 @@ namespace CarReportSystem {
         }
 
         private void fmMain_Load(object sender, EventArgs e) {
-            bindingNavigatorAddNewItem.Enabled = false;
+            bindingNavigatorAddNewItem.Enabled = false; 
             carReportDataGridView.Columns[0].Visible = false;
             carReportDataGridView.Columns[1].HeaderText = "日付";
             carReportDataGridView.Columns[2].HeaderText = "記録者";
@@ -157,6 +157,7 @@ namespace CarReportSystem {
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
             if (carReportDataGridView.CurrentRow == null) return;
             try {
+                ssErrorlabel.Text = "";
                 dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value;                            // 日付
                 cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString();                           // 記録者
                 SetMakerRadioButton((CarReport.MakerGroup)
@@ -167,8 +168,12 @@ namespace CarReportSystem {
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);                           // 画像
 
             }
-            catch (Exception) { 
+            catch (InvalidCastException) { 
                 pbPicture.Image = null;
+            }
+            catch(Exception ex) {
+                //MessageBox.Show(ex.Message);
+                ssErrorlabel.Text = ex.Message;
             }
             
            
