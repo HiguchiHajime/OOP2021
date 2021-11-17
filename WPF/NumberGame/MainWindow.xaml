@@ -23,32 +23,32 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Content="1" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="0" Content="2" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="0" Content="3" Click="Button_Click"/>
-        <Button Grid.Column="3" Grid.Row="0" Content="4" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="0" Content="5" Click="Button_Click"/>
-        <Button Grid.Column="0" Grid.Row="1" Content="6" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="1" Content="7" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="1" Content="8" Click="Button_Click"/>
-        <Button Grid.Column="3" Grid.Row="1" Content="9" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="1" Content="10" Click="Button_Click"/>
-        <Button Grid.Column="0" Grid.Row="2" Content="11" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="2" Content="12" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="2" Content="13" Click="Button_Click"/>
-        <Button Grid.Column="3" Grid.Row="2" Content="14" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="2" Content="15" Click="Button_Click"/>
-        <Button Grid.Column="0" Grid.Row="3" Content="16" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="17" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="3" Content="18" Click="Button_Click"/>
-        <Button Grid.Column="3" Grid.Row="3" Content="19" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="3" Content="20" Click="Button_Click"/>
-        <Button Grid.Column="0" Grid.Row="4" Content="21" Click="Button_Click"/>
-        <Button Grid.Column="1" Grid.Row="4" Content="22" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="4" Content="23" Click="Button_Click"/>
-        <Button Grid.Column="3" Grid.Row="4" Content="24" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="4" Content="25" Click="Button_Click"/>
-        <TextBox x:Name="NumberText" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Text="数字あてゲーム" FontSize="30"/>
-        <TextBox x:Name="GameTimer" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Text="タイマー:" FontSize="30"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="1" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="2" Click="Button_Click"/>
+        <Button Grid.Column="2" Grid.Row="1" Content="3" Click="Button_Click"/>
+        <Button Grid.Column="3" Grid.Row="1" Content="4" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="1" Content="5" Click="Button_Click"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="6" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="7" Click="Button_Click"/>
+        <Button Grid.Column="2" Grid.Row="2" Content="8" Click="Button_Click"/>
+        <Button Grid.Column="3" Grid.Row="2" Content="9" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="2" Content="10" Click="Button_Click"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="11" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="12" Click="Button_Click"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="13" Click="Button_Click"/>
+        <Button Grid.Column="3" Grid.Row="3" Content="14" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="3" Content="15" Click="Button_Click"/>
+        <Button Grid.Column="0" Grid.Row="4" Content="16" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="17" Click="Button_Click"/>
+        <Button Grid.Column="2" Grid.Row="4" Content="18" Click="Button_Click"/>
+        <Button Grid.Column="3" Grid.Row="4" Content="19" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="4" Content="20" Click="Button_Click"/>
+        <Button Grid.Column="0" Grid.Row="5" Content="21" Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="22" Click="Button_Click"/>
+        <Button Grid.Column="2" Grid.Row="5" Content="23" Click="Button_Click"/>
+        <Button Grid.Column="3" Grid.Row="5" Content="24" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="5" Content="25" Click="Button_Click"/>
+        <TextBox x:Name="NumberText" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Text="数字あてゲーム" FontSize="30"/>
+        <TextBox x:Name="GameTimer" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="タイマー:" FontSize="30"/>
     </Grid>
 </Window>

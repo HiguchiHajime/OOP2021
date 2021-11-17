@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace NumberGame {
     /// <summary>
@@ -30,20 +31,32 @@ namespace NumberGame {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             sw.Start();
-           int num = int.Parse(((Button)sender).Content.ToString());
+            // タイマのインスタンスを生成
+            var timer = new DispatcherTimer(DispatcherPriority.Normal)
+            {
+                // インターバルを設定
+                Interval = TimeSpan.FromSeconds(0.1),
+                
+            };
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            int num = int.Parse(((Button)sender).Content.ToString());
             if (Anser > num) {
                 this.NumberText.Text = "選択した値は答えの数字よりも大きいです";
-                this.GameTimer.Text = sw.Elapsed.ToString();
             }
             else if (Anser < num) {
                 this.NumberText.Text = "選択した値は答えの数字よりも小さいです";
-                this.GameTimer.Text = sw.Elapsed.ToString();
+
             }
             else {
                 this.NumberText.Text = "ゲームクリア";
                 sw.Stop();
-                this.GameTimer.Text = sw.Elapsed.ToString();
+
             }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e) {
+            this.GameTimer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
