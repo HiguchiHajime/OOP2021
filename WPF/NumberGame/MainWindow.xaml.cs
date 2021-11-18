@@ -22,7 +22,7 @@ namespace NumberGame {
     public partial class MainWindow : Window {
         private int Anser;
         Stopwatch sw = new Stopwatch();
-        private int Row = 5;
+        private int Row = 6;
         private int Column = 5;
 
         public MainWindow() {
@@ -52,7 +52,7 @@ namespace NumberGame {
                     NButton.Content = count;
                     NButton.Click += Button_Click;
                     this.NumGame.Children.Add(NButton);
-                    count++;
+                    ++count;
                 }
             }
 
