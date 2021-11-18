@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
+        x:Name="MainForm"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        <Grid.RowDefinitions>
+    <Grid x:Name="NumGame">
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -22,8 +23,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="1" Content="1" Click="Button_Click"/>
+        </Grid.ColumnDefinitions>-->
+        <!--<Button Grid.Column="0" Grid.Row="1" Content="1" Click="Button_Click"/>
         <Button Grid.Column="1" Grid.Row="1" Content="2" Click="Button_Click"/>
         <Button Grid.Column="2" Grid.Row="1" Content="3" Click="Button_Click"/>
         <Button Grid.Column="3" Grid.Row="1" Content="4" Click="Button_Click"/>
@@ -47,7 +48,7 @@
         <Button Grid.Column="1" Grid.Row="5" Content="22" Click="Button_Click"/>
         <Button Grid.Column="2" Grid.Row="5" Content="23" Click="Button_Click"/>
         <Button Grid.Column="3" Grid.Row="5" Content="24" Click="Button_Click"/>
-        <Button Grid.Column="4" Grid.Row="5" Content="25" Click="Button_Click"/>
+        <Button Grid.Column="4" Grid.Row="5" Content="25" Click="Button_Click"/>-->
         <TextBox x:Name="NumberText" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Text="数字あてゲーム" FontSize="30"/>
         <TextBox x:Name="GameTimer" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="タイマー:" FontSize="30"/>
     </Grid>
