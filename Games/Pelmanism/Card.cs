@@ -41,8 +41,8 @@ namespace Pelmanism {
 
         public void Close() {
             State = false; // 裏
-            BackColor = OpenColor;
-            Text = Picture;
+            BackColor = CloseColor;
+            Text = string.Empty;
             Enabled = true; // 選択可能
         }
 
