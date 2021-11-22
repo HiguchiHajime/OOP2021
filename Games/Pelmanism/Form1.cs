@@ -25,9 +25,9 @@ namespace Pelmanism {
         /// </summary>
         /// <param name="cards"></param>カード配列への参照
         private void CreateCards(ref Card[] cards) {
-            string[] picture =
+            Image[] picture =
             {
-                "〇","●","▲","△","×","□","■","◇","◆","★","☆","※"
+                Image.FromFile(@"../../Retu.jpg")
             };
             //カードのインスタンス
             cards = new Card[picture.Length * 2];
@@ -38,6 +38,11 @@ namespace Pelmanism {
         }
 
         private void FormGame_Load(object sender, EventArgs e) {
+
+            var limit = 25;
+            gameSec = limit;
+            labelSec.Text = "あと" + gameSec.ToString() + "秒";
+
             // カードの生成
             CreateCards(ref playingCards);
             // プレイヤーの生成
@@ -151,7 +156,6 @@ namespace Pelmanism {
                 card.Close();
             }
             buttonStart.Enabled = false;
-            gameSec = 0;
             timer1.Start();
 
             labelGuidance.Text = "クリックしてカードをめくってください。";
@@ -163,7 +167,7 @@ namespace Pelmanism {
         /// <param name="playingCards"></param>
         private void ShuffleCard(Card[] playingCards) {
             Random r = new Random();
-            string temp = null;
+            Image temp = null;
 
             for(int i = 0; i < playingCards.Length;i++) {
                 var num = r.Next(i, playingCards.Length);
@@ -175,8 +179,18 @@ namespace Pelmanism {
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            gameSec++;
-            labelSec.Text = gameSec + "秒経過";
+            gameSec--;
+            labelSec.Text = "あと" + gameSec + "秒";
+            
+            if(gameSec < 0) {
+                gameSec = 0;
+                labelSec.Text = "Game Over";
+                timer1.Stop();
+                MessageBox.Show("Game Over");
+                Application.Exit();
+
+            }
+
         }
     }
 }
