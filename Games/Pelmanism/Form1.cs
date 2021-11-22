@@ -152,6 +152,7 @@ namespace Pelmanism {
 
         private void buttonStart_Click(object sender, EventArgs e) {
             ShuffleCard(playingCards);
+            gameSec = 25;
             // 全部のカードを伏せる
             foreach (var card in playingCards) {
                 card.Close();

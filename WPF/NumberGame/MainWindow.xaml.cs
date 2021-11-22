@@ -22,7 +22,7 @@ namespace NumberGame {
     public partial class MainWindow : Window {
         private int Anser;
         Stopwatch sw = new Stopwatch();
-        private int Row = 6;
+        private int Row = 5;
         private int Column = 5;
 
         public MainWindow() {
@@ -35,7 +35,7 @@ namespace NumberGame {
                 this.NumGame.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            for (int i = 0; i < row +1; i++) {
+            for (int i = 0; i < row+1; i++) {
                 this.NumGame.RowDefinitions.Add(new RowDefinition());
                
             }
@@ -48,7 +48,7 @@ namespace NumberGame {
                 for (int i = 0; i < row; i++) {
                     Button NButton = new Button();
                     NButton.SetValue(Grid.ColumnProperty, i);
-                    NButton.SetValue(Grid.RowProperty, k+1);
+                    NButton.SetValue(Grid.RowProperty, k);
                     NButton.Content = count;
                     NButton.Click += Button_Click;
                     this.NumGame.Children.Add(NButton);
