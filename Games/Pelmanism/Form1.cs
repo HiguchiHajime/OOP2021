@@ -27,7 +27,8 @@ namespace Pelmanism {
         private void CreateCards(ref Card[] cards) {
             Image[] picture =
             {
-                Image.FromFile(@"../../Retu.jpg")
+                Image.FromFile(@"../../Retu.jpg"),Image.FromFile(@"../../flower.jpg"),Image.FromFile(@"../../kirakira.jpg"),Image.FromFile(@"../../Miso.jpg"),
+                Image.FromFile(@"../../niku.jpg"),Image.FromFile(@"../../yuujiro.png"),Image.FromFile(@"../../Maria.jpg"),Image.FromFile(@"../../Baby.jpg")
             };
             //カードのインスタンス
             cards = new Card[picture.Length * 2];

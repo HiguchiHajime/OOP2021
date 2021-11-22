@@ -34,7 +34,7 @@ namespace Pelmanism {
         public void Open() {
             State = true; // 表
             BackColor = OpenColor;
-            Text = string.Empty;
+            Image = Picture;
             Enabled = false; // 選択不可
         }
 
@@ -42,7 +42,7 @@ namespace Pelmanism {
         public void Close() {
             State = false; // 裏
             BackColor = CloseColor;
-            Text = string.Empty;
+            Image = null;
             Enabled = true; // 選択可能
         }
 
